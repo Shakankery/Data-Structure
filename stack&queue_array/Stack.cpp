@@ -19,21 +19,21 @@ using namespace std;
 class mystack
 {
 private:
-	int *arr;		//Dynamic memory allocate so it's size can be determined during runtime
+	int *arr;	//Dynamic memory allocate so it's size can be determined during runtime
 	int top,size;   //top:indication to the elements in our stack , size:size of our stack
 
 public:
 	//constructor that take the size of our stack from the user 
 	mystack(int n)
 	{
-		arr = new int [n];		//use new operator to allocate an array of size n 
+		arr = new int [n];	//use new operator to allocate an array of size n 
 		size=n;
 		top=0;
 	}
 	//constructor that assign a knowing value 10 to the size of our stack 
 	mystack (void)
 	{
-		arr= new int [10];		//use new operator to allocate an array of size 10
+		arr= new int [10];	//use new operator to allocate an array of size 10
 		size=10;
 		top=0;
 	}
@@ -53,13 +53,13 @@ public:
 	bool isempty(void)
 	{
 		if (top == 0)		return true;
-		else					return false;
+		else			return false;
 	}
 	// check if the stack is full -> top=size
 	bool isfull(void)
 	{
 		if (top == size)		return true;
-		else					return false;
+		else				return false;
 	}
 	void double_size(void)
 	{
@@ -67,7 +67,7 @@ public:
 		temp = new int[size * 2]; 		//use new operator to double the size
 		for (int k = 0; k < size; k++)
 		{
-			temp[k] = arr[k];			//copy element from old array to the new one
+			temp[k] = arr[k];		//copy element from old array to the new one
 		}  
 		delete arr;						
 		size = size * 2;				
@@ -92,7 +92,7 @@ int main()
 	srand(time(NULL));	//select a random sequence based on the value returned by function time
 	int num;
 	mystack odd(14), even;	//create 2 object from our class 
-							//odd stack with size=14,even stack with size =10
+				//odd stack with size=14,even stack with size =10
 	for (int k = 1; k <= 30; k++)
 	{
 		num = rand() % 100;
@@ -105,7 +105,7 @@ int main()
 			}	
 			even.push(num);
 		}
-		else 				//odd number
+		else 			//odd number
 		{
 			if (odd.isfull() == false)	
 			{
