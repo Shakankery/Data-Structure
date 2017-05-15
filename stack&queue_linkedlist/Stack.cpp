@@ -17,17 +17,17 @@
 using namespace std;
 /* linked list consist of number of nodes each with a place
  * to store the data and a pointer to point to the next node
- ----------		----------		
- |    |   |		|    |   |		--------
+ ----------	----------		
+ |    |   |	|    |   |	--------
  |Data| P |---->|Data| P |----> | Null |
- |    |   |		|    |   |		--------
- ----------		----------
+ |    |   |	|    |   |	--------
+ ----------	----------
  * so we create a structure with integer to store data and
  * pointer to point to the next node
  */
 struct stackNode
 {
-	int data;			//integer to store data in the node
+	int data;		//integer to store data in the node
 	stackNode *next;	//a pointer that point to the next node  
 };
 
@@ -45,58 +45,58 @@ public:
 	 * first we create a temporary poiner that point to a node 
 	 * create new node and make our pointer point to it 
 	    		----------		
- 				|    |   |
+ 			|    |   |
  		temp-->	|Data| P |
- 				|    |   |
- 				----------
+ 			|    |   |
+ 			----------
  	 * insert num in data part 
- 	 			----------		
- 				|    |   |
+ 	 		----------		
+ 			|    |   |
  		temp-->	|Num | P |
- 				|    |   |
- 				----------
+ 			|    |   |
+ 			----------
  	 * make node pointer point to top which is poinnt to null
- 	  			---------		
- 				|    |  |		------
+ 	  		---------		
+ 			|    |  |	------
  		temp-->	|Num |  |----> | Null |
- 				|    |  |		------
- 				---------
+ 			|    |  |	------
+ 			---------
  	 * make top point to the first node instead of temp 
- 	   			---------		
- 				|    |  |		------
+ 	   		---------		
+ 			|    |  |	------
  		top--->	|Num |  |----> | Null |
- 				|    |  |		------
- 				--------- 
+ 			|    |  |	------
+ 			--------- 
  	 */
 	void push(int num)
 	{
 		stackNode *temp;		// a temporary pointer that point to a Node
-		temp = new stackNode ;	// create a Node and make temp point to it
+		temp = new stackNode ;		// create a Node and make temp point to it
 		temp->data = num;		// insert number in data part of the node 
 		temp->next = top;		// make node pointer point to top which is poinnt to null
 		top = temp;				
 	}
 	/* Pop Fn.used to extract elements from our Node
 	 * first we create a temporary poiner that point to a node 
-	  		-------	   -------		
- 			|   | |    |   | |	   ------
+	  	-------	   -------		
+ 		|   | |    |   | |	----
  	  top-->| 4 | |--->| 7 | |---> |Null|
- 			|   | |	   |   | |	   ------
-			-------	   -------
+ 		|   | |	   |   | |	----
+		-------	   -------
 	 * extract number from data part in the node and put it in num
 	 * then num =4 , make temp point to the first node and top point
 	 * to the next one  
-	  		-------	   	  -------		
- 			|   | |top--> |   | |	  ------
+	  	-------	      -------		
+ 		|   | |top--> |   | |	  ------
  	 temp-->| 4 | |-----> | 7 | |---> |Null|
- 			|   | |		  |   | |	  ------
-			-------	      -------
+ 		|   | |	      |   | |	  ------
+		-------	      -------
 	 * delete the node that temp point to
-	 	    -------		
- 	 		|   | |	  ------
+	 	-------		
+ 	 	|   | |	  ------
  	  top-->| 7 | |-->|Null|
- 			|   | |	  ------
-			-------
+ 		|   | |	  ------
+		-------
 	 */
 	int pop(void)
 	{
