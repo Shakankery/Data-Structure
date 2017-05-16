@@ -7,7 +7,7 @@
  * The idea of shortest path is to select the 
  * path with minimum cost between source and destination
  * in our Graph we do so by:
- * 1-Create an extra array
+ * 1-Create an extra matrix
      * No.of row = no.of nodes= dim
 	 * No.of column =3 (from,cost,bol)
 	 * bol mean to check if node inside
@@ -20,30 +20,30 @@
  * 5-Repeat 4 till reach our destination 
  * in the Graph able to communicate with each other with minCost cost 
  * hope it will be useful 
- */ 
+ */
 //============================================================================
 #include <iostream>
 #include <stdio.h>
-#include <cstdlib>
-#include <ctime>
 using namespace std;
 
 #define dim 7		//dimension of the Graph =no.of nodes
-#define inf 1000		//assume infinity=999
+#define inf 99		//assume infinity=99
 
 //represent Graph with 2 dimenstional array
-int weight[dim][dim] = {{ 0, 1, inf, inf, inf, 2, inf },
-						{ 1, 0, 8, inf, inf, inf, inf },
-						{ inf, 8, 0, 4, inf, 3, inf },
-						{ inf, inf, 4, 0, 6, inf, inf },
-						{ inf, inf, inf, 6, 0, 5, inf },
-						{ 2, inf, 3, inf, 5, 0, 2 },
-						{ inf, inf, inf, inf, inf, 2, 0 } };
+int weight[dim][dim] = 
+{{ 0, 1, inf, inf, inf, 2, inf },
+{ 1, 0, 8, inf, inf, inf, inf },
+{ inf, 8, 0, 4, inf, 3, inf },
+{ inf, inf, 4, 0, 6, inf, inf },
+{ inf, inf, inf, 6, 0, 5, inf },
+{ 2, inf, 3, inf, 5, 0, 2 },
+{ inf, inf, inf, inf, inf, 2, 0 } };
 
 int main(void)
 {
 	int z[dim][3], source, des, r, minCost, node;
-	// Create extra array
+	
+	// Create an extra matrix
 	for (r = 0; r < dim; r++)
 	{
 		//intial values
@@ -60,7 +60,7 @@ int main(void)
 
 	node = source;					//source is the only node inside the circle
 	minCost = weight[node][node];	//mincost=0
-	//update array with source values 
+	//update matrix with source values 
 	z[source][0] = source; z[source][1] = 0;	z[source][2] = 1;
 
 	do{
@@ -69,7 +69,7 @@ int main(void)
 		//check the nodes that connected to source inside the circle 	
 		//if the node is not reachable and it's cost is larger
 		//than the cost of reaching it via another Node then
-		//swap cost and assign the new via node
+		//swap cost and assign the new via node to the matrix
 			if ((z[r][2] == 0) && (z[r][1] > (weight[node][r] + minCost)))
 			{
 				z[r][1] = weight[node][r] + minCost;	//swap cost

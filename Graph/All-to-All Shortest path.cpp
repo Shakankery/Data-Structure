@@ -18,33 +18,43 @@
 //============================================================================
 #include <iostream>
 #include <stdio.h>
-#include <cstdlib>
-#include <ctime>
 using namespace std;
 
 #define dim 7		//dimension of the Graph =no.of nodes
-#define inf 999		//assume infinity=999
+#define inf 99		//assume infinity=99
 
 //represent Graph with 2 dimenstional array
-int weight[dim][dim] = {{ 0, 1, inf, inf, inf, 2, 9 },
-    					{ 1, 0, 8, inf, inf, inf, inf },
-						{ inf, 8, 0, 4, inf, 3, inf },
-						{ inf, inf, 4, 0, 2, inf, inf },
-	  					{ inf, inf, inf, 2, 0, 1, inf },
-						{ 2, inf, 3, inf, 1, 0, 2 },
-						{ 9, inf, inf, inf, inf, 2, 0 }};
+int weight[dim][dim] =
+{{ 0, 1, inf, inf, inf, 2, 9 },
+{ 1, 0, 8, inf, inf, inf, inf },
+{ inf, 8, 0, 4, inf, 3, inf },
+{ inf, inf, 4, 0, 2, inf, inf },
+{ inf, inf, inf, 2, 0, 1, inf },
+{ 2, inf, 3, inf, 1, 0, 2 },
+{ 9, inf, inf, inf, inf, 2, 0 }};
 
-int main(void)
+void print_matrix(int array[dim][dim])
 {
-	int r, c, flag;	//r:Row , c:Column 
-	//print our original 2 dimensional array
+	int r, c;		//r:Row , c:Column
+	for (c = 0; c < dim; c++)	cout << "\t" << c;
+	cout << "\n";
 	for (r = 0; r < dim; r++)
 	{
+		cout << "\n" << r << "\t";
 		for (c = 0; c < dim; c++)
-			if (weight[r][c] == inf)		cout << "#\t"; 		//print # instead of inf
-			else							cout << weight[r][c] << "\t";
-		cout << "\n";
+			if (array[r][c] == inf)		
+				cout << "#\t";
+			else
+				cout << array[r][c] << "\t";
 	}
+	cout << "\n";
+}
+int main(void)
+{
+	int r, c, flag;			//r:Row , c:Column 
+	//print our original matrix
+	cout<<"original Matrix = "<<endl;
+	print_matrix(weight);
 
 	do{
 		flag = 0;			//to determine no.of changes in the original array
@@ -56,14 +66,9 @@ int main(void)
 						weight[src][dest] = weight[src][via] + weight[via][dest]; 
 						flag++;
 					}
-		cout << "\n Flag = " << flag << endl;
-		//print the updated 2 dimensional array
-		for (r = 0; r < dim; r++)
-		{
-			for (c = 0; c < dim; c++)
-				cout << weight[r][c] << "\t";
-			cout << "\n";
-		}
-		cout << "\n";
+		cout << "\nFlag = " << flag << endl;
+		//print the updated matrix
+		cout<<"Updated Matrix ="<<endl;
+		print_matrix(weight);
 	} while (flag > 0);		//loop till no change happen  
 }
