@@ -1,5 +1,5 @@
 //============================================================================
-// Name        : Stack.cpp
+// Name        : Queue.cpp
 // Author      : Abdelrahman Elshakankery
 // Version     : 1.0
 // Created on  : May 15, 2017
@@ -19,7 +19,7 @@ using namespace std;
 class myqueue
 {
 private:
-	int *arr;			//Dynamic memory allocate so it's size can be determined during runtime
+	int *arr;		//Dynamic memory allocate so it's size can be determined during runtime
 	int front, rear, size, counter;		
 public:
 	//constructor that take the size of our stack from the user
@@ -32,12 +32,12 @@ public:
 	//constructor that assign a knowing value 10 to the size of our stack
 	myqueue(void)
 	{
-		size = 10;					//use new operator to allocate an array of size 10
+		size = 10;			//use new operator to allocate an array of size 10
 		arr = new int[size];
 		front = rear = counter = 0;
 	}
 	/*enqueue Fn. used to insert new elements into our queue
-		--r---------------f--------
+	    --r---------------f--------
  	    | 1 | 3 | 8 | 7 | 5 |  |  |  
  	    ---------------------------
  	    * in this case r will get out of the array and 
@@ -55,7 +55,7 @@ public:
 		counter++;
 	}
 	/* dequeue Fn. used to extract elements from our queue
-		------------------f------r--
+	    ------------------f------r--
  	    | 1 | 3 | 8 | 7 | 5 |  | 2 |  
  	    ----------------------------
  	    * in this case we also need f to return to
@@ -111,10 +111,10 @@ public:
 };
 int main()
 {
-	srand (time(NULL));		//select a random sequence based on the value returned by function time
+	srand (time(NULL));	//select a random sequence based on the value returned by function time
 	int num;
 	myqueue odd(14),even;	//create 2 object from our class 
-							//odd queue with size=14,even queue with size =10
+				//odd queue with size=14,even queue with size =10
 	for (int i = 0; i < 30; ++i)
 	{
 		num =rand() %100;
@@ -127,7 +127,7 @@ int main()
 			}
 			even.enqueue(num);
 		}
-		else
+		else			//odd number
 		{
 			if(odd.isfull() == false)
 			{

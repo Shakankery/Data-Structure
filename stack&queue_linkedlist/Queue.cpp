@@ -1,12 +1,12 @@
 //============================================================================
-// Name        : Stack.cpp
+// Name        : Queue.cpp
 // Author      : Abdelrahman Elshakankery
 // Version     : 1.0
 // Created on  : May 15, 2017
 /* Description :
  * queue is a -(FIFO)- first in first out orderd list 
  * this code is to implement the queue concept using Linkedlist
- * the idea is to store k^2 in a stack when [1<= k <=10]
+ * the idea is to store k^2 in a queue when [1<= k <=10]
  * hope it will be useful 
  */
 //============================================================================
@@ -17,17 +17,17 @@
 using namespace std;
 /* linked list consist of number of nodes each with a place
  * to store the data and a pointer to point to the next node
- ----------		----------		
- |    |   |		|    |   |		--------
+ ----------	----------		
+ |    |   |	|    |   |	--------
  |Data| P |---->|Data| P |----> | Null |
- |    |   |		|    |   |		--------
- ----------		----------
+ |    |   |	|    |   |	--------
+ ----------	----------
  * so we create a structure with integer to store data and
  * pointer to point to the next node
  */
 struct queueNode
 {
-	int data;			//integer to store data in the node
+	int data;		//integer to store data in the node
 	queueNode *next;	//a pointer that point to the next node
 };
 
@@ -45,57 +45,57 @@ public:
 	 * first we create a temporary poiner that point to a node 
 	 * create new node and make our pointer point to it 
 	    		----------		
- 				|    |   |
+ 			|    |   |
  		temp-->	|Data| P |
- 				|    |   |
- 				----------
+ 			|    |   |
+ 			----------
  	 * insert num in data part 
- 	 			----------		
- 				|    |   |
+ 	 		----------		
+ 			|    |   |
  		temp-->	|Num | P |
- 				|    |   |
- 				----------
+ 			|    |   |
+ 			----------
  	 * make node pointer point to Null
- 	  			---------		
- 				|    |  |		------
+ 	  		---------		
+ 			|    |  |	------
  		temp-->	|Num |  |----> | Null |
- 				|    |  |		------
- 				---------
+ 			|    |  |	------
+ 			---------
  	 * check if this the insertion of first element  
- 	   			---------				 |			 ----	
- 				|    |  |		------	 |	rear -->| Nu |
+ 	   		---------		 |		 ----	
+ 			|    |  |	------	 |	rear -->| Nu |
  		temp-->	|Num |  |----> | Null |	 |	front-->| ll |
- 				|    |  |		------	 |			 ----
- 				--------- 				 |
+ 			|    |  |	------	 |		 ----
+ 			--------- 		 |
  	 * if so let front&rear Point to the same Node as temp
- 	  	  		---------		
- 		front->	|    |  |		------
- 				|Num |  |----> | Null |
- 		rear-->	|    |  |		------
- 				---------
+ 	  	  	---------		
+ 		front->	|    |  |	------
+ 			|Num |  |----> | Null |
+ 		rear-->	|    |  |	------
+ 			---------
  	 * if not that mean front point to a different node than rear 
- 	  			--------	    --------
- 				|    | | rear-->|    | |	 ------
+ 	  		--------	--------
+ 			|    | | rear-->|    | |     ------
 		front-->|Num1| |        |Num2| |--->| Null |	
- 				|    | |------->|    | |	 ------
- 				--------	    --------
+ 			|    | |------->|    | |     ------
+ 			--------	--------
 
- 	  			---------		
- 				|    |  |		------
+ 	  		---------		
+ 			|    |  |	------
  		temp-->	|Num3|  |----> | Null |
- 				|    |  |		------
- 				---------
+ 			|    |  |	------
+ 			---------
 	 * in this case make rear.next point to temp then make rear point to temp node
-				--------	  --------	      --------
- 				|    | |	  |    | | rear-->|    | |  	------
+			--------      --------	      --------
+ 			|    | |      |    | | rear-->|    | |      ------
 		front-->|Num1| |----> |Num2| |        |Num3| |---> | Null |	
- 				|    | |	  |    | |------->|    | |  	------
- 				--------	  -------	 	  --------
+ 			|    | |      |    | |------->|    | |      ------
+ 			--------      --------	      --------
  	 */
 	void enqueue(int num)
 	{
 		queueNode *temp;		// a temporary pointer that point to a Node
-		temp = new queueNode;	// create a Node and make temp point to it
+		temp = new queueNode;		// create a Node and make temp point to it
 		temp->data = num;		// insert number in data part in the node
 		temp->next = NULL;		// make node pointer point to Null
 		if(rear == NULL)		//check if this the insertion of first element -->rear=Null
@@ -110,31 +110,31 @@ public:
 	}
 	/* dequeue Fn. used to extract elements from our Node
 	 * first we create a temporary poiner that point to a node 
- 	  			--------	    --------
- 				|    | | rear-->|    | |	 ------
+ 	  		--------	--------
+ 			|    | | rear-->|    | |     ------
 		front-->|Num1| |        |Num2| |--->| Null |	
- 				|    | |------->|    | |	 ------
- 				--------	    --------
+ 			|    | |------->|    | |     ------
+ 			--------	--------
 	 * extract number from data part in the node and put it in num
 	 * then num =Num1 , make temp point to the first node and front point
 	 * to the next one  
-			    --------	    --------
- 				|    | | rear-->|    | |	 ------
+			--------	--------
+ 			|    | | rear-->|    | |     ------
 		 temp-->|Num1| |front-->|Num2| |--->| Null |	
- 				|    | |------->|    | |	 ------
- 				--------	    --------
+ 			|    | |------->|    | |     ------
+ 			--------	--------
 	 * delete the node that temp point to
-	 	     --------		
- 	  rear-->|    | |	 ----
+	 	 --------		
+ 	  rear-->|    | |    ----
  	 front-->|Num2| |-->|Null|
- 			 |    | |	 ----
-			 --------
+ 		 |    | |    ----
+		 --------
 	 * Check if front = Null ,if so let rear also =Null
 	 * which mean we extract all data
 	 	    	 ----	
  		rear -->| Nu |
  		front-->| ll |
- 				 ----
+ 			 ----
 	 */
 	int dequeue(void)
 	{
