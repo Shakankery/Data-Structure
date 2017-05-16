@@ -96,7 +96,7 @@ public:
 		size = size * 2;
 		arr = temp;
 		front = 0;
-		rear = front + counter;
+		rear = counter;
 	}
 
 	int get_number_of_elements(void)
