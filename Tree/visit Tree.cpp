@@ -23,7 +23,7 @@ struct treeNode
 //Depth first search fn. that take 2 parameters
 // a pointer to our structure and an int=no.of nodes
 void print_DFS(treeNode*, int); 
-//Bridth first search fn. that take 2 parameters
+//Breadth first search fn. that take 2 parameters
 // a pointer to our structure and an int=no.of nodes
 void print_BFS(treeNode*, int);
 
@@ -81,7 +81,7 @@ void print_DFS(treeNode *ptr, int size)
 		}
 }
 
-//Bridth first search fn.
+//Breadth first search fn.
 void print_BFS(treeNode *ptr, int size)
 {
 	int k, counter;
