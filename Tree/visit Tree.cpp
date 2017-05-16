@@ -1,6 +1,5 @@
 //============================================================================
 // Name        : visit Tree.cpp
-// Author      : Abdelrahman Elshakankery
 // Version     : 1.0
 // Created on  : May 16, 2017
 /* Description :

@@ -1,6 +1,5 @@
 //============================================================================
 // Name        : Queue.cpp
-// Author      : Abdelrahman Elshakankery
 // Version     : 1.0
 // Created on  : May 15, 2017
 /* Description :
